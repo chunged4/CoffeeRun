@@ -3,9 +3,9 @@
     var App = window.App || {};
     var Promise = window.Promise;
   
+    var data = {};
     function DataStore() { 
       console.log('>>> info: running DataStore');
-      this.data = {};
     }
 
     function promiseResolvedWith(value) {
@@ -15,11 +15,18 @@
       return promise;
     }
   
-    DataStore.prototype.add = function(key, val) { return promiseResolvedWith(null); };
-    DataStore.prototype.get = function(key) { return promiseResolvedWith(this.data[key]); };
-    DataStore.prototype.getAll = function() { return promiseResolvedWith(this.data); };
+    DataStore.prototype.add = function(key, val) { 
+      data[key] = val;
+      return promiseResolvedWith(null);
+    };
+    DataStore.prototype.get = function(key) { 
+      return promiseResolvedWith(this.data[key]);
+    };
+    DataStore.prototype.getAll = function() { 
+      return promiseResolvedWith(data); 
+    };
     DataStore.prototype.remove = function(key) {
-      delete this.data[key];
+      delete data[key];
       return promiseResolvedWith(null);
     };
 

@@ -82,8 +82,36 @@
         </div>
       </div>
     </div>
+    <div class="modal" id="powerUpModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Power-Up Your Coffee</h5>
+          </div>
+          <div class="modal-body">
+            <p>Enter your email to unlock additional options:</p>
+            <input type="email" id="email" name="email" placeholder="Enter your email">
+            <div id="powerUpOptions" style="display: none;">
+              <p>Select power-up options:</p>
+              <input type="checkbox" id="timeTravel" name="powerUp" value="timeTravel">
+              <label for="timeTravel">Time Travel</label><br>
+              <input type="checkbox" id="mindReading" name="powerUp" value="mindReading">
+              <label for="mindReading">Mind Reading</label><br>
+              <input type="checkbox" id="bugFreeCode" name="powerUp" value="bugFreeCode">
+              <label for="bugFreeCode">Bug-Free Code</label><br>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button id="unlockPowerUpButton" class="btn btn-primary">Unlock Power-Ups</button>
+            <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/js/bootstrap.min.js" integrity="sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="scripts/achievement.js" charset="utf-8"></script>
   <script src="scripts/validation.js" charset="utf-8"></script>
   <script src="scripts/checklist.js" charset="utf-8"></script>
   <script src="scripts/formhandler.js" charset="utf-8"></script>

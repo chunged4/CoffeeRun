@@ -4,12 +4,14 @@
   var SLIDER_SELECTOR = '#strengthLevel';
   var SLIDER_VALUE_DISPLAY_SELECTOR = "#sliderValueDisplay";
   var CHECKLIST_SELECTOR = '[data-coffee-order="checklist"]';
+  var MODAL_SELECTOR = '#powerUpModal';
   var SERVER_URL = 'http://coffeerun-v2-rest-api.herokuapp.com/api/coffeeorders';
 
   var App = window.App;
   var Truck = App.Truck;
   var DataStore = App.DataStore;
   var RemoteDataStore = App.RemoteDataStore;
+  var Achievement = App.Achievement;
   var FormHandler = App.FormHandler;
   var CheckList = App.CheckList;
   var remoteDS = new RemoteDataStore(SERVER_URL);
@@ -23,14 +25,16 @@
       console.error('Failed to connect to server: ', error);
       myTruck = new Truck('ncc-1701', new DataStore());
     });
-  myTruck = new Truck('ncc-1701', new DataStore());  
+  myTruck = new Truck('ncc-1701', new DataStore());
   window.myTruck = myTruck;
   
   var checkList = new CheckList(CHECKLIST_SELECTOR);
   checkList.addClickHandler(myTruck.deliverOrder.bind(myTruck));
   
+  var Achievement = new Achievement(MODAL_SELECTOR);
   var FormHandler = new FormHandler(FORM_SELECTOR, SLIDER_SELECTOR, SLIDER_VALUE_DISPLAY_SELECTOR);
   FormHandler.addSubmitHandler(function (data) {
+    Achievement.checkCriteria(data);
     return myTruck.createOrder.call(myTruck, data)
       .then(function () {
         checkList.addRow.call(checkList, data);

@@ -5,10 +5,10 @@
   
     function FormHandler(selector, sliderSelector, sliderValueDisplaySelector) {
       if (!selector) { 
-        throw new Error('No selector provided in FormHandler')
+        throw new Error('No selector provided in FormHandler');
       }
   
-      this.$formElement = $(selector)
+      this.$formElement = $(selector);
       if (this.$formElement.length === 0) {
         throw new Error('Could not find element with selector: ' + selector)
       }
@@ -52,10 +52,10 @@
         console.log(data);
         fn(data)
           .then(function () {
-            self.reset();
+            this.reset();
             this.elements[0].focus();
           }.bind(this));
-        window.location.href = 'payment.html';
+        // window.location.href = 'payment.html';
       });
     };
 
